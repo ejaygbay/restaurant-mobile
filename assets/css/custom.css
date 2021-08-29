@@ -34,5 +34,18 @@
 
 .menu-item-selection {
     justify-self: center;
-    margin-top: 14px;
+}
+
+.menu-item-selection input[type="checkbox"] {
+    margin-top: 18px;
+}
+
+.menu-item-selection div {
+    margin-top: 4px;
+    font-size: 26px;
+}
+
+#food-menu .menu-search {
+    border: solid 1px;
+    border-right: none;
 }
