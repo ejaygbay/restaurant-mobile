@@ -1,9 +1,10 @@
 /* general styles */
 
-#food-menu,
+
+/* #food-menu,
 #order-details {
     display: none;
-}
+} */
 
 
 /* table number selection styles */
@@ -101,6 +102,7 @@
 
 .decrease-qty {
     margin-right: 10px;
+    font-weight: bolder;
 }
 
 .increase-qty {
