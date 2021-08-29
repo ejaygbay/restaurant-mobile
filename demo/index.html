@@ -263,7 +263,7 @@
             <section class="page-wrapper mdc-toolbar-fixed-adjust">
                 <main class="content-wrapper">
                     <div class="mdc-layout-grid">
-                        <!-- Table number section -->
+                        <!-- Table number selection section -->
                         <section id="table-num">
                             <div class="mdc-layout-grid__cell--span-12">
                                 <div class="mdc-card">
@@ -282,10 +282,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <button id="after-num-selection-btn" class="mdc-button mdc-button--outlined outlined-button--dark">Next</button>
                                         </div>
-                                        <a href="" style="margin-top: 10px; display: block; float: right;">
-                                            <button class="mdc-button mdc-button--outlined outlined-button--dark">Next</button>
-                                        </a>
+                                        <!-- <button style="margin-top: 10px; display: block; float: right;" class="mdc-button mdc-button--outlined outlined-button--dark">Next</button> -->
 
                                     </div>
                                 </div>
@@ -495,15 +494,11 @@
                                 </div>
                             </div>
 
-                            <a href="" style="margin-top: 10px; display: block; float: right;">
-                                <button class="mdc-button mdc-button--outlined outlined-button--dark">Next</button>
-                            </a>
+                            <button id="after-menu-selection-btn" class="mt-4 mdc-button mdc-button--outlined outlined-button--dark">Next</button>
                         </section>
 
-                        <br><br>
-
                         <!-- Order details -->
-                        <section>
+                        <section id="order-details">
                             <div class="card">
                                 <div class="card-header bg-white text-center py-3">
                                     <h5 class="mb-0 fw-bold">Order Summary</h5>
@@ -519,7 +514,7 @@
                             </div>
                             <button type="button" class="mt-3 btn btn-success btn-block mb-4 place-order">Place order</button>
 
-                            <h5 class="mb-2 fw-bold">Order Detail</h5>
+                            <h5 class="mb-2 fw-bold">Order Details</h5>
 
                             <div class="card mt-2">
                                 <div class="card-body">
@@ -640,23 +635,14 @@
     <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script> -->
+	<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script> -->
+
+    <script src="../assets/js/custom.js"></script>
 
 
 
 
     <script>
-        let triggerTabList = [].slice.call(document.querySelectorAll('#nav-tab button'));
-        console.log(triggerTabList);
-        triggerTabList.forEach(function(triggerEl) {
-            var tabTrigger = new bootstrap.Tab(triggerEl)
-
-            triggerEl.addEventListener('click', function(event) {
-                event.preventDefault()
-                tabTrigger.show()
-            })
-        })
-
         // $(document).ready(function() {
         //     $('#table_id').DataTable();
         // });
