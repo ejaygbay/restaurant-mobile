@@ -1,0 +1,15 @@
+.table-num-cards {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-between;
+}
+
+.table-num-card-item {
+    background: #fff;
+    font-size: 3em;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: #b3b3b3 1px 1px 3px;
+    border-radius: 2px;
+}
