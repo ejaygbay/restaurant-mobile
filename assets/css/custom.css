@@ -49,3 +49,33 @@
     border: solid 1px;
     border-right: none;
 }
+
+.order-details {
+    display: grid;
+    grid-template-columns: 15% 5% 80%;
+}
+
+.order-details p {
+    font-size: 20px;
+}
+
+.place-order {
+    font-size: 20px;
+}
+
+.decrease-qty,
+.increase-qty {
+    padding: 5px 20px;
+    border: solid 1px;
+    border-radius: 2px;
+}
+
+.decrease-qty {
+    margin-right: 10px;
+}
+
+.increase-qty {
+    margin-left: 10px;
+    font-size: 19px;
+    padding: 0px 18px;
+}
