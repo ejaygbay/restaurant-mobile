@@ -15,11 +15,20 @@ document.querySelector("#after-num-selection-btn").addEventListener("click", () 
     showSection("#food-menu");
 })
 
+document.querySelectorAll(".table-num-card-item").forEach(ele => {
+    ele.addEventListener("click", () => {
+        hideSection("#table-num");
+        showSection("#food-menu");
+    })
+})
+
 // Next button in the menu selection section
 document.querySelector("#after-menu-selection-btn").addEventListener("click", () => {
     hideSection("#food-menu");
     showSection("#order-details");
 })
+
+
 
 const hideSection = (ele) => {
     document.querySelector(ele).style = "display: none";

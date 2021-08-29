@@ -1,7 +1,12 @@
+/* general styles */
+
 #food-menu,
 #order-details {
     display: none;
 }
+
+
+/* table number selection styles */
 
 .table-num-cards {
     display: grid;
@@ -17,6 +22,22 @@
     box-shadow: #b3b3b3 1px 1px 3px;
     border-radius: 2px;
 }
+
+.action-btns {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.place-order,
+.next,
+.prev {
+    font-size: 20px;
+}
+
+
+/* food menu section styles */
 
 .food-menu-item {
     display: grid;
@@ -55,16 +76,19 @@
     border-right: none;
 }
 
+
+/* order details section styles */
+
 .order-details {
     display: grid;
     grid-template-columns: 15% 5% 80%;
 }
 
-.order-details p {
-    font-size: 20px;
+.place-order {
+    padding: 4px 10px;
 }
 
-.place-order {
+.order-details p {
     font-size: 20px;
 }
 
