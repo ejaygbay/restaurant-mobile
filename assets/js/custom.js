@@ -55,7 +55,7 @@ triggerTabList.forEach(function(triggerEl) {
 })
 
 // Next button in the table selection section
-document.querySelector("#after-num-selection-btn").addEventListener("click", () => {
+document.querySelector("#table-selection-next-btn").addEventListener("click", () => {
     hideSection("#table-num");
     showSection("#food-menu");
 })
@@ -68,11 +68,21 @@ document.querySelectorAll(".table-num-card-item").forEach(ele => {
 })
 
 // Next button in the menu selection section
-document.querySelector("#after-menu-selection-btn").addEventListener("click", () => {
+document.querySelector("#menu-selection-next-btn").addEventListener("click", () => {
     hideSection("#food-menu");
     showSection("#order-details");
     displayOrderSummary();
     displayOrderDetails();
+})
+
+document.querySelector("#menu-selection-previous-btn").addEventListener("click", () => {
+    hideSection("#food-menu");
+    showSection("#table-num");
+})
+
+document.querySelector("#order-details-previous-btn").addEventListener("click", () => {
+    hideSection("#order-details");
+    showSection("#food-menu");
 })
 
 const hideSection = (ele) => {
