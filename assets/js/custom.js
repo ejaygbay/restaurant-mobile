@@ -293,6 +293,16 @@ document.querySelector("#order-details-order-btn").addEventListener("click", () 
 
             hideSection("#order-details");
             showSection("#table-num");
+            restartOrder();
         }
     })
 })
+
+const restartOrder = () => {
+    selected_menu_items.forEach(ele => {
+        document.querySelector(`#menu-${ele}`).checked = false;
+    })
+
+    selected_menu_items = [];
+    displaySelectedMenuItems(selected_menu_items);
+}
