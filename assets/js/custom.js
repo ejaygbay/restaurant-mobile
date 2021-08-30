@@ -40,6 +40,11 @@ const showSection = (ele) => {
 /**
  * Food menu scripts
  */
+document.querySelectorAll(".food-menu-item input[type=checkbox]").forEach(ele => {
+    ele.addEventListener("change", (e) => {
+        console.log(e.target.checked);
+    })
+})
 
 
 
