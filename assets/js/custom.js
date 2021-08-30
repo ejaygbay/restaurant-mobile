@@ -36,6 +36,16 @@ const showSection = (ele) => {
     document.querySelector(ele).style = "display: block";
 }
 
+
+/**
+ * Food menu scripts
+ */
+
+
+
+
+
+
 /**
  * Order details
  */
