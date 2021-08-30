@@ -4,8 +4,8 @@ let menu_obj = {
         price: 13.24,
         type: "food"
     },
-    "sirloin_tips*_&_chicken_tenders_family_meal_deal": {
-        item: "Sirloin Tips* & Chicken Tenders Family Meal Deal",
+    "sirloin_tips_and_chicken_tenders_family_meal_deal": {
+        item: "Sirloin Tips And Chicken Tenders Family Meal Deal",
         price: 54.75,
         type: "food"
     },
@@ -40,10 +40,11 @@ let menu_obj = {
         type: "drink"
     }
 }
+let selected_menu_items = [];
 
 // General scripts
 let triggerTabList = [].slice.call(document.querySelectorAll('#nav-tab button'));
-console.log(triggerTabList);
+// console.log(triggerTabList);
 triggerTabList.forEach(function(triggerEl) {
     var tabTrigger = new bootstrap.Tab(triggerEl)
 
@@ -84,6 +85,7 @@ const showSection = (ele) => {
 /**
  * Food menu scripts
  */
+// Function that will display the food and drinks menu
 const displayMenuItems = (items_array) => {
     let food_items = document.querySelector(`#food-menu-list`);
     let drink_items = document.querySelector(`#drinks-menu-list`);
@@ -109,9 +111,49 @@ displayMenuItems(Object.keys(menu_obj));
 
 document.querySelectorAll(".food-menu-item input[type=checkbox]").forEach(ele => {
     ele.addEventListener("change", (e) => {
-        console.log(e.target.checked);
+        let ele_clicked_id = e.target.id.replace("menu-", "");
+        if (e.target.checked) {
+            selected_menu_items.push(ele_clicked_id);
+            displaySelectedMenuItems(selected_menu_items);
+        } else {
+            selected_menu_items.splice(selected_menu_items.indexOf(ele_clicked_id), 1);
+            displaySelectedMenuItems(selected_menu_items);
+        }
     })
 })
+
+const displaySelectedMenuItems = (items_arr) => {
+    let selected_items = document.querySelector(`#selected-menu-list`);
+    selected_items.innerHTML = "";
+
+    items_arr.forEach(ele => {
+        let html = `<div class="food-menu-item" id="selected-${ele}">
+            <div class="food-detail">
+                <div class="menu-item-title">${menu_obj[ele].item}</div>
+                <div class="menu-item-price">$${menu_obj[ele].price}</div>
+            </div>
+            <div class="menu-item-selection">
+                <div>
+                    <i id="remove-${ele}" class="mdi mdi-close-box-outline remove"></i>
+                </div>
+            </div>
+        </div>`;
+
+        selected_items.insertAdjacentHTML('beforeend', html);
+    })
+
+    // function to remove selected item from the list
+    document.querySelectorAll(".remove").forEach(ele => {
+        ele.addEventListener("click", function() {
+            let remove_id = this.id.replace("remove-", "");
+            document.querySelector(`#selected-${remove_id}`).style = "display: none";
+            selected_menu_items.splice(selected_menu_items.indexOf(remove_id), 1);
+            document.querySelector(`#menu-${remove_id}`).checked = false;
+        })
+    })
+}
+
+
 
 
 
