@@ -1,0 +1,38 @@
+{
+    "food": {
+        "bucket-of-seafood-chowder": {
+            "item": "Bucket Of Seafood Chowder",
+            "price": 13.24
+        },
+        "sirloin-tips*-&-chicken-tenders-family-meal-deal": {
+            "item": "Sirloin Tips* & Chicken Tenders Family Meal Deal",
+            "price": 54.75
+        },
+        "french-fries": {
+            "item": "French Fries",
+            "price": 5.00
+        },
+        "gingerbread": {
+            "item": "Gingerbread",
+            "price": 4.00
+        }
+    },
+    "drinks": {
+        "fresh-strawberry-margarita": {
+            "item": "Fresh Strawberry Margarita",
+            "price": 14.00
+        },
+        "frozen-lemonades": {
+            "item": "Frozen Lemonades",
+            "price": 4.59
+        },
+        "fresh-fruit-sangria": {
+            "item": "Fresh Fruit Sangria",
+            "price": 7.39
+        },
+        "sparkling-refreshers": {
+            "item": "Sparkling Refreshers",
+            "price": 3.26
+        }
+    }
+}
