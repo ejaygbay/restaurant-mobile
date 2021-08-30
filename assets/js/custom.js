@@ -316,4 +316,5 @@ const restartOrder = () => {
 
     selected_menu_items = [];
     displaySelectedMenuItems(selected_menu_items);
+    showOrHideNextButton();
 }
