@@ -71,6 +71,8 @@ document.querySelectorAll(".table-num-card-item").forEach(ele => {
 document.querySelector("#after-menu-selection-btn").addEventListener("click", () => {
     hideSection("#food-menu");
     showSection("#order-details");
+    displayOrderSummary();
+    displayOrderDetails();
 })
 
 const hideSection = (ele) => {
@@ -163,13 +165,54 @@ const displaySelectedMenuItems = (items_arr) => {
 /**
  * Order details
  */
-document.querySelectorAll(".increase-qty").forEach(ele => {
-    ele.addEventListener("click", (e) => increaseItemQuantity(e.target.parentElement.id))
-})
+const displayOrderSummary = () => {
+    document.querySelector("#total-items").innerHTML = selected_menu_items.length;
+    let total_amount = 0;
+    selected_menu_items.forEach(ele => {
+        total_amount += menu_obj[ele].price;
+    })
+    document.querySelector("#order-details-grand-total").innerHTML = `$${total_amount.toFixed(2)}`;
+}
 
-document.querySelectorAll(".decrease-qty").forEach(ele => {
-    ele.addEventListener("click", (e) => decreaseItemQuantity(e.target.parentElement.id))
-})
+const displayOrderDetails = () => {
+    let order_details = document.querySelector("#order-details-items");
+    order_details.innerHTML = "";
+
+    selected_menu_items.forEach(ele => {
+        let html = `<div class="card mt-2">
+            <div class="card-body">
+                <div class="order-details order-detail-item">
+                    <h5>Item</h5>
+                    <span>:</span>
+                    <p>${menu_obj[ele].item}</p>
+                </div>
+                <div class="order-details order-detail-qty">
+                    <h5>Qty</h5>
+                    <span>:</span>
+                    <p id="order-details-${ele}">
+                        <span class="btn btn-light decrease-qty">─</span>
+                        <span id="order-details-${ele}-qty">1</span>
+                        <span class="btn btn-light increase-qty">+</span>
+                    </p>
+                </div>
+                <div class="order-details order-detail-price">
+                    <h5>Price</h5>
+                    <span>:</span>
+                    <p id="order-details-${ele}-price">$${menu_obj[ele].price}</p>
+                </div>
+            </div>
+        </div>`;
+        order_details.insertAdjacentHTML('beforeend', html);
+    })
+
+    document.querySelectorAll(".increase-qty").forEach(ele => {
+        ele.addEventListener("click", (e) => increaseItemQuantity(e.target.parentElement.id))
+    })
+
+    document.querySelectorAll(".decrease-qty").forEach(ele => {
+        ele.addEventListener("click", (e) => decreaseItemQuantity(e.target.parentElement.id))
+    })
+}
 
 // Increase item quantity
 const increaseItemQuantity = (ele_id) => {
@@ -194,6 +237,7 @@ const increasePrice = (ele_id) => {
     let single_price = parseFloat((current_price / (current_qty - 1)).toFixed(2));
     let sum = (current_price + single_price).toFixed(2);
     document.querySelector(`#${ele_id}-price`).innerHTML = `$${sum}`;
+    increaseGrandTotal(single_price);
 }
 
 // Decrease price
@@ -203,4 +247,19 @@ const decreasePrice = (ele_id) => {
     let single_price = parseFloat((current_price / (current_qty + 1)).toFixed(2));
     let difference = (current_price - single_price).toFixed(2);
     document.querySelector(`#${ele_id}-price`).innerHTML = `$${difference}`;
+    decreaseGrandTotal(single_price);
+}
+
+const increaseGrandTotal = (amount) => {
+    let grand_total_ele = document.querySelector("#order-details-grand-total");
+    let current_grand_total = parseFloat(grand_total_ele.innerHTML.split("$")[1]);
+    let new_grand_total = (current_grand_total + amount).toFixed(2);
+    grand_total_ele.innerHTML = `$${new_grand_total}`;
+}
+
+const decreaseGrandTotal = (amount) => {
+    let grand_total_ele = document.querySelector("#order-details-grand-total");
+    let current_grand_total = parseFloat(grand_total_ele.innerHTML.split("$")[1]);
+    let new_grand_total = (current_grand_total - amount).toFixed(2);
+    grand_total_ele.innerHTML = `$${new_grand_total}`;
 }
