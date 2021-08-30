@@ -167,11 +167,6 @@ const displaySelectedMenuItems = (items_arr) => {
 
 
 
-
-
-
-
-
 /**
  * Order details
  */
@@ -273,3 +268,31 @@ const decreaseGrandTotal = (amount) => {
     let new_grand_total = (current_grand_total - amount).toFixed(2);
     grand_total_ele.innerHTML = `$${new_grand_total}`;
 }
+
+document.querySelector("#order-details-order-btn").addEventListener("click", () => {
+    let grand_total = document.querySelector("#order-details-grand-total").innerHTML;
+
+    Swal.fire({
+        title: `This order will cost you <h2 style="font-size: 50px">${grand_total}</h2>`,
+        showCancelButton: true,
+        confirmButtonText: `Confirm Order`,
+        cancelButtonText: `Cancel`,
+        confirmButtonColor: `green`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            Swal.fire('Saved!', '', 'success')
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your order has been placed',
+                showConfirmButton: false,
+                timer: 2000
+            })
+
+            hideSection("#order-details");
+            showSection("#table-num");
+        }
+    })
+})
