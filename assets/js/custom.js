@@ -60,6 +60,7 @@ document.querySelector("#table-selection-next-btn").addEventListener("click", ()
     showSection("#food-menu");
 })
 
+// When a card number on the table selection section is clicked
 document.querySelectorAll(".table-num-card-item").forEach(ele => {
     ele.addEventListener("click", () => {
         hideSection("#table-num");
@@ -131,6 +132,8 @@ document.querySelectorAll(".food-menu-item input[type=checkbox]").forEach(ele =>
             selected_menu_items.splice(selected_menu_items.indexOf(ele_clicked_id), 1);
             displaySelectedMenuItems(selected_menu_items);
         }
+
+        showOrHideNextButton();
     })
 })
 
@@ -161,10 +164,18 @@ const displaySelectedMenuItems = (items_arr) => {
             document.querySelector(`#selected-${remove_id}`).style = "display: none";
             selected_menu_items.splice(selected_menu_items.indexOf(remove_id), 1);
             document.querySelector(`#menu-${remove_id}`).checked = false;
+            showOrHideNextButton();
         })
     })
 }
 
+const showOrHideNextButton = () => {
+    if (selected_menu_items.length < 1) {
+        document.querySelector("#menu-selection-next-btn").style = "display: none";
+    } else {
+        document.querySelector("#menu-selection-next-btn").style = "display: block";
+    }
+}
 
 
 /**

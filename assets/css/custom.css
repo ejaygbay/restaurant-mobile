@@ -1,7 +1,8 @@
 /* general styles */
 
 #food-menu,
-#order-details {
+#order-details,
+#menu-selection-next-btn {
     display: none;
 }
 
