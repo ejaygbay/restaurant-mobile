@@ -178,9 +178,7 @@ const showOrHideNextButton = () => {
 }
 
 document.querySelector("#search").addEventListener("keyup", (e) => {
-    let key_pressed = e.key;
     let search_text = document.querySelector("#search").value.toUpperCase();
-    console.log(search_text, key_pressed);
     filterMenuItems(search_text);
 })
 
@@ -199,8 +197,6 @@ const filterMenuItems = (text_to_find) => {
     menu_item_price.forEach(ele => {
         if (ele.textContent.toUpperCase().includes(text_to_find)) {
             ele.parentNode.parentNode.style = "visibility: visible;";
-        } else {
-            ele.parentNode.parentNode.style = "visibility: hidden; display: none;";
         }
     })
 }
