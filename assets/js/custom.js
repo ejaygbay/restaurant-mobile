@@ -177,6 +177,34 @@ const showOrHideNextButton = () => {
     }
 }
 
+document.querySelector("#search").addEventListener("keyup", (e) => {
+    let key_pressed = e.key;
+    let search_text = document.querySelector("#search").value.toUpperCase();
+    console.log(search_text, key_pressed);
+    filterMenuItems(search_text);
+})
+
+const filterMenuItems = (text_to_find) => {
+    let menu_item_title = document.querySelectorAll(".menu-item-title");
+    let menu_item_price = document.querySelectorAll(".menu-item-price");
+
+    menu_item_title.forEach(ele => {
+        if (ele.textContent.toUpperCase().includes(text_to_find)) {
+            ele.parentNode.parentNode.style = "visibility: visible;";
+        } else {
+            ele.parentNode.parentNode.style = "visibility: hidden; display: none;";
+        }
+    })
+
+    menu_item_price.forEach(ele => {
+        if (ele.textContent.toUpperCase().includes(text_to_find)) {
+            ele.parentNode.parentNode.style = "visibility: visible;";
+        } else {
+            ele.parentNode.parentNode.style = "visibility: hidden; display: none;";
+        }
+    })
+}
+
 
 /**
  * Order details
