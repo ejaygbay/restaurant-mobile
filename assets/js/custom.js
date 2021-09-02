@@ -350,4 +350,14 @@ const restartOrder = () => {
     displaySelectedMenuItems(selected_menu_items);
     showOrHideNextButton();
     clearSearchBar();
+
+    document.querySelectorAll(".restaurant-menu").forEach(ele => {
+        if (ele.classList.contains("active")) {
+            ele.classList.remove("active");
+            ele.classList.remove("show");
+        }
+    })
+    document.querySelector("#nav-food-tab").classList.add("active");
+    document.querySelector("#nav-food").classList.add("active");
+    document.querySelector("#nav-food").classList.add("show");
 }
