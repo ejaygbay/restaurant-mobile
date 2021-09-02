@@ -60,7 +60,7 @@ document.querySelector("#table-selection-next-btn").addEventListener("click", ()
     showSection("#food-menu");
 })
 
-// When a card number on the table selection section is clicked
+// When a card number in the table selection section is clicked
 document.querySelectorAll(".table-num-card-item").forEach(ele => {
     ele.addEventListener("click", () => {
         hideSection("#table-num");
@@ -72,6 +72,7 @@ document.querySelectorAll(".table-num-card-item").forEach(ele => {
 document.querySelector("#menu-selection-next-btn").addEventListener("click", () => {
     hideSection("#food-menu");
     showSection("#order-details");
+    clearSearchBar();
     displayOrderSummary();
     displayOrderDetails();
 })
@@ -79,11 +80,13 @@ document.querySelector("#menu-selection-next-btn").addEventListener("click", () 
 document.querySelector("#menu-selection-previous-btn").addEventListener("click", () => {
     hideSection("#food-menu");
     showSection("#table-num");
+    clearSearchBar();
 })
 
 document.querySelector("#order-details-previous-btn").addEventListener("click", () => {
     hideSection("#order-details");
     showSection("#food-menu");
+    clearSearchBar();
 })
 
 const hideSection = (ele) => {
@@ -199,6 +202,11 @@ const filterMenuItems = (text_to_find) => {
             ele.parentNode.parentNode.style = "visibility: visible;";
         }
     })
+}
+
+const clearSearchBar = () => {
+    document.querySelector("#search").value = "";
+    filterMenuItems("");
 }
 
 
@@ -341,4 +349,5 @@ const restartOrder = () => {
     selected_menu_items = [];
     displaySelectedMenuItems(selected_menu_items);
     showOrHideNextButton();
+    clearSearchBar();
 }
